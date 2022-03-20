@@ -1,0 +1,42 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "gRPCGraphQLWebSockets.Services.Proto";
+
+import "google/api/annotations.proto";
+
+package sendMessage;
+service MessageSender {
+  rpc ReceiveMessage (ReceiveMessageRequest) returns (ReceiveMessageReply) {
+    option (google.api.http) = {
+      get: "/grpc/messages/{id}"
+    };
+  }
+  
+  rpc SendMessage (SendMessageRequest) returns (SendMessageReply) {
+    option (google.api.http) = {
+      post: "/grpc/messages"
+      body: "messagePayload"
+    };
+  }
+}
+
+message ReceiveMessageRequest {
+  int64 id = 1;
+}
+
+message ReceiveMessageReply {
+  int64 id = 1;
+  string text = 2;
+}
+
+message SendMessageRequest {
+  MessagePayload messagePayload = 1;
+}
+
+message MessagePayload {
+  string text = 1;
+}
+
+message SendMessageReply {
+  int64 id = 1;
+}

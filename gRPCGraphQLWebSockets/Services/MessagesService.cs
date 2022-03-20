@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.Model;
 using gRPCGraphQLWebSockets.Services.Intefaces;
@@ -22,9 +21,9 @@ namespace gRPCGraphQLWebSockets.Services
             return message;
         }
 
-        public long AddMessage(string messageText)
+        public long AddMessage(NewMessage newMessage)
         {
-            var message = new Message(messageText);
+            var message = new Message(newMessage);
 
             _context.Add(message);
 
