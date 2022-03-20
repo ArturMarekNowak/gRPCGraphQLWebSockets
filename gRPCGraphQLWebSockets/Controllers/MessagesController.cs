@@ -15,12 +15,12 @@ namespace gRPCGraphQLWebSockets.Controllers
             _messagesService = messagesService;
         }
 
-        [HttpGet("{messageId:long}")]
+        [HttpGet("{id:long}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public ActionResult<Message> GetMessage(int messageId)
+        public ActionResult<Message> GetMessage(long id)
         {
-            var message = _messagesService.GetMessage(messageId);
+            var message = _messagesService.GetMessage(id);
 
             if (message is null)
                 return NotFound();
@@ -30,7 +30,7 @@ namespace gRPCGraphQLWebSockets.Controllers
         
         [HttpPost]
         [ProducesResponseType(201)] 
-        public ActionResult<Message> AddMessage(NewMessage newMessage) 
+        public ActionResult<MessageId> AddMessage(NewMessage newMessage) 
         { 
             var messageId = _messagesService.AddMessage(newMessage);
                      

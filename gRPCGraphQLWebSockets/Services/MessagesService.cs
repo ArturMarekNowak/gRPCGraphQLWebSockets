@@ -14,9 +14,9 @@ namespace gRPCGraphQLWebSockets.Services
             _context = context;
         }
         
-        public Message GetMessage(int messageId)
+        public Message GetMessage(long id)
         {
-            var message = _context.Messages.FirstOrDefault(m => m.Id == messageId);
+            var message = _context.Messages.FirstOrDefault(m => m.Id == id);
 
             return message;
         }
