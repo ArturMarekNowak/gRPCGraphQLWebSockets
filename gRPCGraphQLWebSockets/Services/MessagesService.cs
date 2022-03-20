@@ -21,9 +21,9 @@ namespace gRPCGraphQLWebSockets.Services
             return message;
         }
 
-        public long AddMessage(string messageText)
+        public long AddMessage(NewMessage newMessage)
         {
-            var message = new Message(messageText);
+            var message = new Message(newMessage);
 
             _context.Add(message);
 

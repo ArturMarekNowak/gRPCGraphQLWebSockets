@@ -17,15 +17,32 @@ namespace gRPCGraphQLWebSockets.Services
             _context = context;
         }
 
-        public override Task<MessageReply> ReceiveMessage(MessageRequest messageRequest, ServerCallContext context)
+        public override Task<ReceiveMessageReply> ReceiveMessage(ReceiveMessageRequest messageRequest, ServerCallContext context)
         {
              var message = _context.Messages.FirstOrDefault(m => m.Id == messageRequest.Id);
             
-             return Task.FromResult(new MessageReply()
+             return Task.FromResult(new ReceiveMessageReply()
              {
                  Id = message.Id,
                  Text = message.Text
              });
+        } 
+        
+        public override Task<SendMessageReply> SendMessage(SendMessageRequest messageRequest, ServerCallContext context)
+        {
+            var message = new Message()
+            {
+                Text = messageRequest.MessagePayload.Text
+            };
+              
+            _context.Add(message);
+            
+            _context.SaveChanges();
+       
+            return Task.FromResult(new SendMessageReply()
+            {
+                Id = message.Id
+            });
         }
     }
 }

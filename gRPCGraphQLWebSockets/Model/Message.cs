@@ -9,9 +9,9 @@ namespace gRPCGraphQLWebSockets.Model
             
         }
         
-        public Message(string messageText)
+        public Message(NewMessage newMessage)
         {
-            Text = messageText;
+            Text = newMessage.Text;
         }
         
         public long Id { get; set; }

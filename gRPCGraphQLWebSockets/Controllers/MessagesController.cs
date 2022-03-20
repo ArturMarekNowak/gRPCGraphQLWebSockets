@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace gRPCGraphQLWebSockets.Controllers
 {
     [ApiController]
-    [Route("api/messages")]
+    [Route("rest/messages")]
     public class MessagesController : Controller
     {
         private readonly IMessagesService _messagesService;
@@ -15,7 +15,7 @@ namespace gRPCGraphQLWebSockets.Controllers
             _messagesService = messagesService;
         }
 
-        [HttpGet]
+        [HttpGet("{messageId:long}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         public ActionResult<Message> GetMessage(int messageId)
@@ -30,11 +30,11 @@ namespace gRPCGraphQLWebSockets.Controllers
         
         [HttpPost]
         [ProducesResponseType(201)] 
-        public ActionResult<Message> AddMessage(string messageText) 
+        public ActionResult<Message> AddMessage(NewMessage newMessage) 
         { 
-            var messageId = _messagesService.AddMessage(messageText);
+            var messageId = _messagesService.AddMessage(newMessage);
                      
-            return Ok(messageId);
+            return Ok(new MessageId(){ Id = messageId });
         }
     }
 }

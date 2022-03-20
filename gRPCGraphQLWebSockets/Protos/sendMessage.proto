@@ -6,18 +6,37 @@ import "google/api/annotations.proto";
 
 package sendMessage;
 service MessageSender {
-  rpc ReceiveMessage (MessageRequest) returns (MessageReply) {
+  rpc ReceiveMessage (ReceiveMessageRequest) returns (ReceiveMessageReply) {
     option (google.api.http) = {
-      get: "/message/{id}"
+      get: "/grpc/messages/{id}"
+    };
+  }
+  
+  rpc SendMessage (SendMessageRequest) returns (SendMessageReply) {
+    option (google.api.http) = {
+      post: "/grpc/messages"
+      body: "messagePayload"
     };
   }
 }
 
-message MessageRequest {
+message ReceiveMessageRequest {
   int64 id = 1;
 }
 
-message MessageReply {
+message ReceiveMessageReply {
   int64 id = 1;
   string text = 2;
+}
+
+message SendMessageRequest {
+  MessagePayload messagePayload = 1;
+}
+
+message MessagePayload {
+  string text = 1;
+}
+
+message SendMessageReply {
+  int64 id = 1;
 }
