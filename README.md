@@ -40,5 +40,7 @@ Project is: _in progress_
 Since Microsoft documentation on gRPC+Swagger is realy "so so" these two guys were my inspiration: 
 
 https://github.com/grpc/grpc-dotnet/issues/167#issuecomment-830776140
+
 https://github.com/bernardbr/dotnetgrpcrest
+
 https://github.com/fl0wm0ti0n/GrpcWithHttpApiSwaggerAndDocker_Test
