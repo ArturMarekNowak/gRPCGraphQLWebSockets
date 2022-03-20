@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.Model;
 using gRPCGraphQLWebSockets.Services.Intefaces;
