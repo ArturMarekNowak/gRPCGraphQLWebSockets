@@ -1,4 +1,6 @@
-﻿using gRPCGraphQLWebSockets.Model;
+﻿using System.Collections.Generic;
+using System.Linq;
+using gRPCGraphQLWebSockets.Model;
 using gRPCGraphQLWebSockets.Services.Intefaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,19 +17,27 @@ namespace gRPCGraphQLWebSockets.Controllers
             _messagesService = messagesService;
         }
 
-        [HttpGet("{id:long}")]
+        /// <summary>
+        /// This method allows retrieval of the messages in the project
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
         [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
-        public ActionResult<Message> GetMessage(long id)
+        public ActionResult<List<Message>> GetMessages()
         {
-            var message = _messagesService.GetMessage(id);
+            var messages = _messagesService.GetMessages();
 
-            if (message is null)
+            if (!messages.Any())
                 return NotFound();
             
-            return Ok(message);
+            return Ok(messages);
         }
         
+        /// <summary>
+        /// This method allows adding of the message in the project
+        /// </summary>
+        /// <param name="newMessage">NewMessage object which is just a string with message content</param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(201)] 
         public ActionResult<MessageId> AddMessage(NewMessage newMessage) 

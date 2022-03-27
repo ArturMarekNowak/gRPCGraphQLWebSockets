@@ -1,10 +1,11 @@
-﻿using gRPCGraphQLWebSockets.Model;
+﻿using System.Collections.Generic;
+using gRPCGraphQLWebSockets.Model;
 
 namespace gRPCGraphQLWebSockets.Services.Intefaces
 {
     public interface IMessagesService
     {
-        public Message GetMessage(long messageId);
+        public List<Message> GetMessages();
 
         public long AddMessage(NewMessage newMessage);
     }

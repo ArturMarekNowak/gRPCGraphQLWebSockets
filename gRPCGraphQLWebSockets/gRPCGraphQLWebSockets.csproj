@@ -25,4 +25,8 @@
       <Protobuf Include="Protos\sendMessage.proto" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
 </Project>

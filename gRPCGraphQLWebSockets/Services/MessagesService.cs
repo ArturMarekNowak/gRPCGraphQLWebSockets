@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.Model;
 using gRPCGraphQLWebSockets.Services.Intefaces;
@@ -7,18 +8,18 @@ namespace gRPCGraphQLWebSockets.Services
 {
     public class MessagesService : IMessagesService
     {
-        public gRPCGraphQLWebSocketsDatabaseContext _context;
+        private gRPCGraphQLWebSocketsDatabaseContext _context;
 
         public MessagesService(gRPCGraphQLWebSocketsDatabaseContext context)
         {
             _context = context;
         }
         
-        public Message GetMessage(long id)
+        public List<Message> GetMessages()
         {
-            var message = _context.Messages.FirstOrDefault(m => m.Id == id);
+            var messages = _context.Messages.ToList();
 
-            return message;
+            return messages;
         }
 
         public long AddMessage(NewMessage newMessage)

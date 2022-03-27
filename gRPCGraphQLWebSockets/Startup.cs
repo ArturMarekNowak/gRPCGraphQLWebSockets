@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.Services;
 using gRPCGraphQLWebSockets.Services.Intefaces;
@@ -30,6 +33,9 @@ namespace gRPCGraphQLWebSockets
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "gRPCGraphQLWebSockets", Version = "v1"});
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
             services.AddGrpcSwagger();
 
