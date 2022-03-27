@@ -1,4 +1,5 @@
-﻿using gRPCGraphQLWebSockets.gRPC.Proto;
+﻿using gRPCGraphQLWebSockets.GraphQL.Model;
+using gRPCGraphQLWebSockets.gRPC.Proto;
 using gRPCGraphQLWebSockets.Rest.Model;
 
 #nullable disable
@@ -9,9 +10,8 @@ namespace gRPCGraphQLWebSockets.Model
     {
         public Message()
         {
-            
         }
-        
+
         public Message(RESTNewMessage newMessage)
         {
             Text = newMessage.Text;
@@ -21,7 +21,12 @@ namespace gRPCGraphQLWebSockets.Model
         {
             Text = gRpcCreateMessageRequest.MessagePayload.Text;
         }
-        
+
+        public Message(GraphQLNewMessage gRpcCreateMessageRequest)
+        {
+            Text = gRpcCreateMessageRequest.Text;
+        }
+
         public long Id { get; set; }
         public string Text { get; set; }
     }
