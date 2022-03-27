@@ -4,7 +4,7 @@ option csharp_namespace = "gRPCGraphQLWebSockets.gRPC.Proto";
 
 import "google/api/annotations.proto";
 
-package foo;
+package gRPC;
 service gRPCMessagesService {
   rpc GetMessages (gRPCGetMessagesRequest) returns (gRPCGetMessagesResponse) {
     option (google.api.http) = {
