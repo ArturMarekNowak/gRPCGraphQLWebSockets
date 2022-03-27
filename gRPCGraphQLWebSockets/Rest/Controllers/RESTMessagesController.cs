@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using gRPCGraphQLWebSockets.Model;
-using gRPCGraphQLWebSockets.Services.Intefaces;
+using gRPCGraphQLWebSockets.Rest.Model;
+using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace gRPCGraphQLWebSockets.Controllers
+namespace gRPCGraphQLWebSockets.Rest.Controllers
 {
     [ApiController]
     [Route("rest/messages")]
     public class MessagesController : Controller
     {
-        private readonly IMessagesService _messagesService;
+        private readonly IRESTMessagesService _messagesService;
 
-        public MessagesController(IMessagesService messagesService)
+        public MessagesController(IRESTMessagesService messagesService)
         {
             _messagesService = messagesService;
         }
@@ -40,11 +41,11 @@ namespace gRPCGraphQLWebSockets.Controllers
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(201)] 
-        public ActionResult<MessageId> CreateMessage(NewMessage newMessage) 
+        public ActionResult<RESTMessageId> CreateMessage(RESTNewMessage newMessage) 
         { 
             var messageId = _messagesService.CreateMessage(newMessage);
                      
-            return Ok(new MessageId(){ Id = messageId });
+            return Ok(new RESTMessageId(){ Id = messageId });
         }
     }
 }

@@ -2,14 +2,14 @@ using System;
 using System.IO;
 using System.Reflection;
 using gRPCGraphQLWebSockets.Database;
-using gRPCGraphQLWebSockets.Services;
-using gRPCGraphQLWebSockets.Services.Intefaces;
+using gRPCGraphQLWebSockets.gRPC;
+using gRPCGraphQLWebSockets.Rest.Services;
+using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 namespace gRPCGraphQLWebSockets
@@ -40,7 +40,7 @@ namespace gRPCGraphQLWebSockets
             services.AddGrpcSwagger();
 
             services.AddDbContext<gRPCGraphQLWebSocketsDatabaseContext>();
-            services.AddScoped<IMessagesService, MessagesService>();
+            services.AddScoped<IRESTMessagesService, RESTMessagesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +57,7 @@ namespace gRPCGraphQLWebSockets
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapGrpcService<MessageSenderService>();
+                endpoints.MapGrpcService<gRPCMessagesService>();
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response

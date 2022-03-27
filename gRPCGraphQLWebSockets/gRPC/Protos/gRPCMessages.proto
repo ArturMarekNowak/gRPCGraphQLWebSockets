@@ -1,0 +1,46 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "gRPCGraphQLWebSockets.gRPC.Proto";
+
+import "google/api/annotations.proto";
+
+package foo;
+service gRPCMessagesService {
+  rpc GetMessages (gRPCGetMessagesRequest) returns (gRPCGetMessagesResponse) {
+    option (google.api.http) = {
+      get: "/grpc/messages"
+    };
+  }
+  
+  rpc CreateMessage (gRPCCreateMessageRequest) returns (gRPCCreateMessageResponse) {
+    option (google.api.http) = {
+      post: "/grpc/messages"
+      body: "messagePayload"
+    };
+  }
+}
+
+message gRPCGetMessagesRequest {
+  
+}
+
+message gRPCGetMessagesResponse {
+  repeated gRPCMessage messages = 1;
+}
+
+message gRPCMessage {
+  int64 id = 1;
+  string text = 2;
+}
+
+message gRPCCreateMessageRequest {
+  gRPCMessagePayload messagePayload = 1;
+}
+
+message gRPCMessagePayload {
+  string text = 1;
+}
+
+message gRPCCreateMessageResponse {
+  int64 id = 1;
+}

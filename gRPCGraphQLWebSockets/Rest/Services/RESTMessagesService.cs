@@ -2,15 +2,16 @@
 using System.Linq;
 using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.Model;
-using gRPCGraphQLWebSockets.Services.Intefaces;
+using gRPCGraphQLWebSockets.Rest.Model;
+using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
 
-namespace gRPCGraphQLWebSockets.Services
+namespace gRPCGraphQLWebSockets.Rest.Services
 {
-    public class MessagesService : IMessagesService
+    public class RESTMessagesService : IRESTMessagesService
     {
         private gRPCGraphQLWebSocketsDatabaseContext _context;
 
-        public MessagesService(gRPCGraphQLWebSocketsDatabaseContext context)
+        public RESTMessagesService(gRPCGraphQLWebSocketsDatabaseContext context)
         {
             _context = context;
         }
@@ -22,7 +23,7 @@ namespace gRPCGraphQLWebSockets.Services
             return messages;
         }
 
-        public long CreateMessage(NewMessage newMessage)
+        public long CreateMessage(RESTNewMessage newMessage)
         {
             var message = new Message(newMessage);
 
