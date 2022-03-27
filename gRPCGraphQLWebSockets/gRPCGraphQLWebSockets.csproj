@@ -22,7 +22,17 @@
 	</ItemGroup>
 
     <ItemGroup>
-      <Protobuf Include="Protos\sendMessage.proto" />
+      <Folder Include="Rest" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Protobuf Include="gRPC\Protos\gRPCMessages.proto">
+        <Generator>MSBuild:Compile</Generator>
+      </Protobuf>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
 
 </Project>
