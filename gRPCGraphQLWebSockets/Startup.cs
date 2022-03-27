@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using gRPCGraphQLWebSockets.Database;
+using gRPCGraphQLWebSockets.GraphQL;
 using gRPCGraphQLWebSockets.gRPC;
 using gRPCGraphQLWebSockets.Rest.Services;
 using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
@@ -10,25 +11,30 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 namespace gRPCGraphQLWebSockets
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _environment;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
-            Configuration = configuration;
+            _configuration = configuration;
+            _environment = environment;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration _configuration { get; }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
             services.AddGrpcHttpApi();
-            
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -41,16 +47,17 @@ namespace gRPCGraphQLWebSockets
 
             services.AddDbContext<gRPCGraphQLWebSocketsDatabaseContext>();
             services.AddScoped<IRESTMessagesService, RESTMessagesService>();
+
+            services.AddGraphQLServer()
+                .AddQueryType<MessagesQuery>()
+                .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = _environment.IsDevelopment());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "gRPCGraphQLWebSockets v1");
-            });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "gRPCGraphQLWebSockets v1"); });
 
             app.UseRouting();
 
@@ -61,8 +68,10 @@ namespace gRPCGraphQLWebSockets
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response
-                        .WriteAsync("Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+                        .WriteAsync(
+                            "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
                 });
+                endpoints.MapGraphQL();
             });
         }
     }
