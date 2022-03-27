@@ -22,7 +22,7 @@ namespace gRPCGraphQLWebSockets.Services
             return messages;
         }
 
-        public long AddMessage(NewMessage newMessage)
+        public long CreateMessage(NewMessage newMessage)
         {
             var message = new Message(newMessage);
 

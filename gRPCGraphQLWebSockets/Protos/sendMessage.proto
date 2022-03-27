@@ -5,14 +5,14 @@ option csharp_namespace = "gRPCGraphQLWebSockets.Services.Proto";
 import "google/api/annotations.proto";
 
 package sendMessage;
-service MessageSender {
-  rpc ReceiveMessage (ReceiveMessageRequest) returns (ReceiveMessageReply) {
+service GetMessages {
+  rpc ReceiveMessage (GetMessagesRequest) returns (GetMessagesResponse) {
     option (google.api.http) = {
-      get: "/grpc/messages/{id}"
+      get: "/grpc/messages"
     };
   }
   
-  rpc SendMessage (SendMessageRequest) returns (SendMessageReply) {
+  rpc CreateMessage (CreateMessageRequest) returns (CreateMessageResponse) {
     option (google.api.http) = {
       post: "/grpc/messages"
       body: "messagePayload"
@@ -20,16 +20,20 @@ service MessageSender {
   }
 }
 
-message ReceiveMessageRequest {
-  int64 id = 1;
+message GetMessagesRequest {
+  
 }
 
-message ReceiveMessageReply {
+message GetMessagesResponse {
+  repeated Message messages = 1;
+}
+
+message Message {
   int64 id = 1;
   string text = 2;
 }
 
-message SendMessageRequest {
+message CreateMessageRequest {
   MessagePayload messagePayload = 1;
 }
 
@@ -37,6 +41,6 @@ message MessagePayload {
   string text = 1;
 }
 
-message SendMessageReply {
+message CreateMessageResponse {
   int64 id = 1;
 }

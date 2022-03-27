@@ -7,6 +7,6 @@ namespace gRPCGraphQLWebSockets.Services.Intefaces
     {
         public List<Message> GetMessages();
 
-        public long AddMessage(NewMessage newMessage);
+        public long CreateMessage(NewMessage newMessage);
     }
 }

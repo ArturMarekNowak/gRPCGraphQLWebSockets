@@ -40,9 +40,9 @@ namespace gRPCGraphQLWebSockets.Controllers
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(201)] 
-        public ActionResult<MessageId> AddMessage(NewMessage newMessage) 
+        public ActionResult<MessageId> CreateMessage(NewMessage newMessage) 
         { 
-            var messageId = _messagesService.AddMessage(newMessage);
+            var messageId = _messagesService.CreateMessage(newMessage);
                      
             return Ok(new MessageId(){ Id = messageId });
         }

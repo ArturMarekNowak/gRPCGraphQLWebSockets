@@ -1,14 +1,15 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
 using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.Model;
-using Microsoft.Extensions.Logging;
 using gRPCGraphQLWebSockets.Services.Proto;
+using Message = gRPCGraphQLWebSockets.Model.Message;
 
 namespace gRPCGraphQLWebSockets.Services
 {
-    public class MessageSenderService : MessageSender.MessageSenderBase 
+    public class MessageSenderService 
     {
         public gRPCGraphQLWebSocketsDatabaseContext _context;
         
@@ -17,20 +18,19 @@ namespace gRPCGraphQLWebSockets.Services
             _context = context;
         }
 
-        public override Task<ReceiveMessageReply> ReceiveMessage(ReceiveMessageRequest messageRequest, ServerCallContext context)
+        public Task<GetMessagesResponse> GetMessages(GetMessagesRequest messageRequest, ServerCallContext context)
         {
-             var message = _context.Messages.FirstOrDefault(m => m.Id == messageRequest.Id);
-            
-             return Task.FromResult(new ReceiveMessageReply()
-             {
-                 Id = message.Id,
-                 Text = message.Text
-             });
+             var messages = _context.Messages.ToList();
+             
+             var getMessagesResponse = new GetMessagesResponse();
+             getMessagesResponse.Messages.AddRange(messages.Cast<gRPCGraphQLWebSockets.Services.Proto.Message>());
+             
+             return Task.FromResult(getMessagesResponse);
         } 
         
-        public override Task<SendMessageReply> SendMessage(SendMessageRequest messageRequest, ServerCallContext context)
+        public Task<CreateMessageResponse> CreateMessage(CreateMessageRequest messageRequest, ServerCallContext context)
         {
-            var message = new Message()
+            var message = new Model.Message()
             {
                 Text = messageRequest.MessagePayload.Text
             };
@@ -39,7 +39,7 @@ namespace gRPCGraphQLWebSockets.Services
             
             _context.SaveChanges();
        
-            return Task.FromResult(new SendMessageReply()
+            return Task.FromResult(new CreateMessageResponse()
             {
                 Id = message.Id
             });
