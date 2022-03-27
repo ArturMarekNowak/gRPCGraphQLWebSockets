@@ -49,7 +49,8 @@ namespace gRPCGraphQLWebSockets
             services.AddScoped<IRESTMessagesService, RESTMessagesService>();
 
             services.AddGraphQLServer()
-                .AddQueryType<MessagesQuery>()
+                .AddQueryType<GraphQLMessagesQuery>()
+                .AddMutationType<GraphQLMessagesMutation>()
                 .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = _environment.IsDevelopment());
         }
 

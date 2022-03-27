@@ -5,7 +5,7 @@ using gRPCGraphQLWebSockets.Model;
 
 namespace gRPCGraphQLWebSockets.GraphQL
 {
-    public class MessagesQuery
+    public class GraphQLMessagesQuery
     {
         public List<Message> GetMessages()
         {
