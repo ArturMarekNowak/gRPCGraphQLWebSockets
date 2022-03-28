@@ -4,7 +4,7 @@ using gRPCGraphQLWebSockets.Rest.Model;
 
 #nullable disable
 
-namespace gRPCGraphQLWebSockets.Model
+namespace gRPCGraphQLWebSockets.SharedModel
 {
     public sealed class Message
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using gRPCGraphQLWebSockets.Database;
-using gRPCGraphQLWebSockets.Model;
+using gRPCGraphQLWebSockets.SharedModel;
 
 namespace gRPCGraphQLWebSockets.GraphQL
 {

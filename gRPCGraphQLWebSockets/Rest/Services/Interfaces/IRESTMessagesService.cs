@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using gRPCGraphQLWebSockets.Model;
 using gRPCGraphQLWebSockets.Rest.Model;
+using gRPCGraphQLWebSockets.SharedModel;
 
 namespace gRPCGraphQLWebSockets.Rest.Services.Interfaces
 {

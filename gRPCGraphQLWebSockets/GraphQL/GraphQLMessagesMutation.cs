@@ -1,6 +1,6 @@
 ﻿using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.GraphQL.Model;
-using gRPCGraphQLWebSockets.Model;
+using gRPCGraphQLWebSockets.SharedModel;
 
 namespace gRPCGraphQLWebSockets.GraphQL
 {
