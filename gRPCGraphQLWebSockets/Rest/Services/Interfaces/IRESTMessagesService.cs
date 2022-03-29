@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using gRPCGraphQLWebSockets.Rest.Model;
 using gRPCGraphQLWebSockets.SharedModel;
 
@@ -8,6 +9,6 @@ namespace gRPCGraphQLWebSockets.Rest.Services.Interfaces
     {
         public List<Message> GetMessages();
 
-        public long CreateMessage(RESTNewMessage newMessage);
+        public Task<long> CreateMessage(RESTNewMessage newMessage);
     }
 }

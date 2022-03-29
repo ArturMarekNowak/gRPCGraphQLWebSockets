@@ -6,6 +6,7 @@ using gRPCGraphQLWebSockets.GraphQL;
 using gRPCGraphQLWebSockets.gRPC;
 using gRPCGraphQLWebSockets.Rest.Services;
 using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
+using gRPCGraphQLWebSockets.SignalR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,7 +28,6 @@ namespace gRPCGraphQLWebSockets
         }
 
         private IConfiguration _configuration { get; }
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -52,6 +52,16 @@ namespace gRPCGraphQLWebSockets
                 .AddQueryType<GraphQLMessagesQuery>()
                 .AddMutationType<GraphQLMessagesMutation>()
                 .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = _environment.IsDevelopment());
+
+            services.AddSignalR();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                    builder.WithOrigins("http://localhost:5000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,7 +83,10 @@ namespace gRPCGraphQLWebSockets
                             "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
                 });
                 endpoints.MapGraphQL();
+                endpoints.MapHub<SignalRMessageHub>("/signalr");
             });
+
+            app.UseCors();
         }
     }
 }
