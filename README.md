@@ -43,7 +43,7 @@ Solution structure is as following:
         └── ...               
 
 ## Screenshots
-![Alt Text](https://imgur.com/1sUrFhg)
+![Alt Text](https://imgur.com/1sUrFhg.gif)
 
 ## Technologies
 * REST API 
