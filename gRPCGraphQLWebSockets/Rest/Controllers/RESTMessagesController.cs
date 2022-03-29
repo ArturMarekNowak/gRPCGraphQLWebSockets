@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using gRPCGraphQLWebSockets.Rest.Model;
 using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
 using gRPCGraphQLWebSockets.SharedModel;
@@ -41,9 +42,9 @@ namespace gRPCGraphQLWebSockets.Rest.Controllers
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(201)]
-        public ActionResult<RESTMessageId> CreateMessage(RESTNewMessage newMessage)
+        public async Task<ActionResult<RESTMessageId>> CreateMessage(RESTNewMessage newMessage)
         {
-            var messageId = _messagesService.CreateMessage(newMessage);
+            var messageId = await _messagesService.CreateMessage(newMessage);
 
             return Ok(new RESTMessageId {Id = messageId});
         }

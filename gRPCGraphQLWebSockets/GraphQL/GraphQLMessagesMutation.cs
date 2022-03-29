@@ -1,4 +1,5 @@
-﻿using gRPCGraphQLWebSockets.Database;
+﻿using System.Threading.Tasks;
+using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.GraphQL.Model;
 using gRPCGraphQLWebSockets.SharedModel;
 
@@ -6,16 +7,20 @@ namespace gRPCGraphQLWebSockets.GraphQL
 {
     public class GraphQLMessagesMutation
     {
-        public GraphQLMessageCreatedPayload CreateMessage(GraphQLNewMessage newMessage)
+        private readonly gRPCGraphQLWebSocketsDatabaseContext _context;
+
+        public GraphQLMessagesMutation(gRPCGraphQLWebSocketsDatabaseContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<GraphQLMessageCreatedPayload> CreateMessage(GraphQLNewMessage newMessage)
         {
             var message = new Message(newMessage);
 
-            using (var context = new gRPCGraphQLWebSocketsDatabaseContext())
-            {
-                context.Add(message);
+            await _context.AddAsync(message);
 
-                context.SaveChanges();
-            }
+            await _context.SaveChangesAsync();
 
             return new GraphQLMessageCreatedPayload {Id = message.Id};
         }

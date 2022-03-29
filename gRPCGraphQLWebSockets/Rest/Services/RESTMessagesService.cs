@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.Rest.Model;
 using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
@@ -23,13 +24,13 @@ namespace gRPCGraphQLWebSockets.Rest.Services
             return messages;
         }
 
-        public long CreateMessage(RESTNewMessage newMessage)
+        public async Task<long> CreateMessage(RESTNewMessage newMessage)
         {
             var message = new Message(newMessage);
 
-            _context.Add(message);
+            await _context.AddAsync(message);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return message.Id;
         }

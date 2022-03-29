@@ -34,16 +34,16 @@ namespace gRPCGraphQLWebSockets.gRPC
             return Task.FromResult(getMessagesResponse);
         }
 
-        public override Task<gRPCCreateMessageResponse> CreateMessage(gRPCCreateMessageRequest messageRequest,
+        public override async Task<gRPCCreateMessageResponse> CreateMessage(gRPCCreateMessageRequest messageRequest,
             ServerCallContext context)
         {
             var message = new Message(messageRequest);
 
-            _context.Add(message);
+            await _context.AddAsync(message);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            return Task.FromResult(new gRPCCreateMessageResponse
+            return await Task.FromResult(new gRPCCreateMessageResponse
             {
                 Id = message.Id
             });

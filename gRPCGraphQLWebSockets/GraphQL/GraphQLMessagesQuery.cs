@@ -7,14 +7,18 @@ namespace gRPCGraphQLWebSockets.GraphQL
 {
     public class GraphQLMessagesQuery
     {
+        private readonly gRPCGraphQLWebSocketsDatabaseContext _context;
+
+        public GraphQLMessagesQuery(gRPCGraphQLWebSocketsDatabaseContext context)
+        {
+            _context = context;
+        }
+
         public List<Message> GetMessages()
         {
             var messages = new List<Message>();
 
-            using (var context = new gRPCGraphQLWebSocketsDatabaseContext())
-            {
-                messages = context.Messages.ToList();
-            }
+            messages = _context.Messages.ToList();
 
             return messages;
         }
