@@ -43,7 +43,26 @@ Solution structure is as following:
         └── ...               
 
 ## Screenshots
-![Alt Text](https://imgur.com/1sUrFhg.gif)
+
+### SignalR 
+
+You can see messages incoming from gRPC and REST being broadcasted to SignalR client as I wanted to be. They are with timestamp. You can also see message sent from SignalR client upon which Id was returned as indication of succesfull message sending. 
+
+![SignalR](https://i.imgur.com/2jX7WWi.gif)
+
+
+### gRPC
+
+gRPC response in swagger.
+
+![gRPC](https://i.imgur.com/rCKMYax.png)
+
+
+### GraphQL
+
+GraphQL example.
+
+![GraphQL](https://imgur.com/1sUrFhg)
 
 ## Technologies
 * REST API 
