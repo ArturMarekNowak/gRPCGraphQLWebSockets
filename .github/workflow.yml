@@ -1,0 +1,26 @@
+name: build
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '6.0.x' ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install dependencies
+        run: dotnet restore gRPCGraphQLWebSockets/gRPCGraphQLWebSockets.csproj
+      - name: Build
+        run: dotnet build gRPCGraphQLWebSockets/gRPCGraphQLWebSockets.csproj --configuration Release --no-restore
+      - name: Install dependencies
+        run: dotnet restore SignalRClient/SignalRClient.csproj
+      - name: Build
+        run: dotnet build SignalRClient/SignalRClient.csproj --configuration Release --no-restore
