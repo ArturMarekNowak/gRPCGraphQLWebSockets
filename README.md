@@ -43,7 +43,7 @@ Solution structure is as following:
         └── ...               
 
 ## Screenshots
-![Alt Text](https://drive.google.com/file/d/1wr5awzZ4L2ijRaMN8dHD9zDG4Kh7BWHD/view?usp=sharing)
+![Alt Text](https://imgur.com/1sUrFhg)
 
 ## Technologies
 * REST API 
