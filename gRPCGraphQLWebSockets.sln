@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPCGraphQLWebSockets", "gRPCGraphQLWebSockets\gRPCGraphQLWebSockets.csproj", "{47878516-79C4-42FA-AD70-48E07DF42B01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSignalR", "SignalRClient\ClientSignalR.csproj", "{617B0B54-E9E6-4BB1-91B6-FD2F9829FDAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRClient", "SignalRClient\SignalRClient.csproj", "{617B0B54-E9E6-4BB1-91B6-FD2F9829FDAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
