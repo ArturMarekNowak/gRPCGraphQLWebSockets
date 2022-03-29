@@ -62,7 +62,7 @@ gRPC response in swagger.
 
 GraphQL example.
 
-![GraphQL](https://imgur.com/1sUrFhg)
+![GraphQL](https://imgur.com/1sUrFhg.gif)
 
 ## Technologies
 * REST API 
