@@ -1,4 +1,5 @@
-﻿using gRPCGraphQLWebSockets.GraphQL.Model;
+﻿using System;
+using gRPCGraphQLWebSockets.GraphQL.Model;
 using gRPCGraphQLWebSockets.gRPC.Proto;
 using gRPCGraphQLWebSockets.Rest.Model;
 
@@ -29,5 +30,10 @@ namespace gRPCGraphQLWebSockets.SharedModel
 
         public long Id { get; set; }
         public string Text { get; set; }
+
+        public override string ToString()
+        {
+            return $"{DateTime.Now}: {Text}";
+        }
     }
 }

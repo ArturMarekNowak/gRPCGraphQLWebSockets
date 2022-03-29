@@ -10,7 +10,7 @@ namespace ClientSignalR
             Console.WriteLine("Chat Room Console Client Started!");
 
             var connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5000/chat")
+                .WithUrl("http://localhost:5000/signalr")
                 .WithAutomaticReconnect()
                 .Build();
 

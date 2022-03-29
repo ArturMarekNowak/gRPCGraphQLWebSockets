@@ -55,7 +55,7 @@ namespace gRPCGraphQLWebSockets.Database
         public override async ValueTask<EntityEntry<Message>> AddAsync<Message>(Message message,
             CancellationToken cancellationToken = new())
         {
-            await messageHub.Clients.All.SendAsync("ReceiveMessage", message);
+            await messageHub.Clients.All.SendAsync("ReceiveMessage", message.ToString());
 
             return await base.AddAsync(message, cancellationToken);
         }

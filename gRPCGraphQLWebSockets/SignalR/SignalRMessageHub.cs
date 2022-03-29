@@ -21,6 +21,8 @@ namespace gRPCGraphQLWebSockets.SignalR
             await _context.Messages.AddAsync(message);
 
             await _context.SaveChangesAsync();
+
+            await Clients.All.SendAsync("ReceiveMessage", "id: " + message.Id);
         }
     }
 }
