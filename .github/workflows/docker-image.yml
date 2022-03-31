@@ -23,11 +23,11 @@ jobs:
       uses: aquasecurity/trivy-action@master
       with:
         image-ref: 'grpcgraphqlwebsocketsimage'
-        format: 'sarif'
-        output: 'trivy-results.sarif'
-
-    - name: Display scan reult
-      run: cat trivy-results.sarif
+        format: 'table'
+        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH,MEDIUM,LOW'
 
     - name: Upload Trivy scan results to GitHub Security tab
       uses: github/codeql-action/upload-sarif@v1
