@@ -1,6 +1,6 @@
 # gRPC GraphQL WebSockets 
 
-![Build](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/workflow.yml/badge.svg) ![Docker Image CI](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/docker-image.yml/badge.svg)
+![Build](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/workflow.yml/badge.svg) ![Trivy and Dockle](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/docker-image.yml/badge.svg)
 
 
 The objective of this project is to make a toy example of REST API, gRPC, GraphQL and Websockets all accessing and realizing the same objective: retrieving and sending a simple message to the same database.
@@ -22,11 +22,13 @@ Solution consists of two projects:
 
 After project is build and run the four API's can be accessed via given URL's:
 
-- http://localhost:5000/swagger/index.html - under this URL well-know <em>Swagger</em> documentation documents REST and gRPC endpoints
+- http://localhost:5000/swagger/index.html - under this URL well-know <em>Swagger</em> documentation documents REST and gRPC endpoints:
 	- http://localhost:5000/rest 
 	- http://localhost:5000/grpc
 - http://localhost:5000/graphql - under this URL the <em>Banana Cake Pop</em> tool can be accessed which allows to test GraphQL with ease
 - http://localhost:5000/signalr - under this URL the SignalR server operates. Unfortunately no "built-in" tool is implementated to test it. Hence I made a simple SignalR client. But I hope that it changes soon and the SignalR endpoints would be accessible from SwaggerUI.
+
+For container the origin is: http://localhost:8080/
 
 Solution structure is as following:
 
@@ -71,6 +73,7 @@ GraphQL example.
 * GraphQL
 * SignalR
 * SQLite
+* Docker
 
 ## Setup
 If you have .NET6 and Visual Studio or JetBrains Rider just open .sln file and try to run the project.
