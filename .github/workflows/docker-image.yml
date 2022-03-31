@@ -28,3 +28,8 @@ jobs:
         ignore-unfixed: true
         vuln-type: 'os,library'
         severity: 'CRITICAL,HIGH,MEDIUM,LOW'
+        
+    - name: Run dockle security diagnosis 
+    - uses: hands-lab/dockle-action@v1
+      with:
+        image: grpcgraphqlwebsocketsimage
