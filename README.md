@@ -1,6 +1,7 @@
 # gRPC GraphQL WebSockets 
 
-![Build](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/workflow.yml/badge.svg)
+![Build](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/workflow.yml/badge.svg) ![Docker Image CI](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/docker-image.yml/badge.svg)
+
 
 The objective of this project is to make a toy example of REST API, gRPC, GraphQL and Websockets all accessing and realizing the same objective: retrieving and sending a simple message to the same database.
 
