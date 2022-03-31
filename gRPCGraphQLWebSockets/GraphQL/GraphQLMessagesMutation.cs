@@ -2,25 +2,20 @@
 using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.GraphQL.Model;
 using gRPCGraphQLWebSockets.SharedModel;
+using HotChocolate;
 
 namespace gRPCGraphQLWebSockets.GraphQL
 {
     public class GraphQLMessagesMutation
     {
-        private readonly gRPCGraphQLWebSocketsDatabaseContext _context;
-
-        public GraphQLMessagesMutation(gRPCGraphQLWebSocketsDatabaseContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<GraphQLMessageCreatedPayload> CreateMessage(GraphQLNewMessage newMessage)
+        public async Task<GraphQLMessageCreatedPayload> CreateMessage(
+            [Service] gRPCGraphQLWebSocketsDatabaseContext context, GraphQLNewMessage newMessage)
         {
             var message = new Message(newMessage);
 
-            await _context.AddAsync(message);
+            await context.AddAsync(message);
 
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return new GraphQLMessageCreatedPayload {Id = message.Id};
         }

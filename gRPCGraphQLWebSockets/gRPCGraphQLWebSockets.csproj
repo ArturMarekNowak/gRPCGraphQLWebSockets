@@ -5,22 +5,23 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Grpc.AspNetCore" Version="2.44.0" />
-        <PackageReference Include="Grpc.AspNetCore.Server" Version="2.44.0" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.44.0"/>
+        <PackageReference Include="Grpc.AspNetCore.Server" Version="2.44.0"/>
         <PackageReference Include="Grpc.Tools" Version="2.45.0-pre1">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="HotChocolate.AspNetCore" Version="12.7.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Grpc.HttpApi" Version="0.1.0-alpha.21317.5" />
-        <PackageReference Include="Microsoft.AspNetCore.Grpc.Swagger" Version="0.1.0-alpha.21317.5" />
+        <PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.7.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Grpc.HttpApi" Version="0.1.0-alpha.21317.5"/>
+        <PackageReference Include="Microsoft.AspNetCore.Grpc.Swagger" Version="0.1.0-alpha.21317.5"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0-preview.2.22153.1">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0-preview.2.22153.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
-	</ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0-preview.2.22153.1"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0"/>
+    </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Rest" />

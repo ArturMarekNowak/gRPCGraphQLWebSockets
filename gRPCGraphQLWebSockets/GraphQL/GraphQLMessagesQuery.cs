@@ -2,23 +2,17 @@
 using System.Linq;
 using gRPCGraphQLWebSockets.Database;
 using gRPCGraphQLWebSockets.SharedModel;
+using HotChocolate;
 
 namespace gRPCGraphQLWebSockets.GraphQL
 {
     public class GraphQLMessagesQuery
     {
-        private readonly gRPCGraphQLWebSocketsDatabaseContext _context;
-
-        public GraphQLMessagesQuery(gRPCGraphQLWebSocketsDatabaseContext context)
-        {
-            _context = context;
-        }
-
-        public List<Message> GetMessages()
+        public List<Message> GetMessages([Service] gRPCGraphQLWebSocketsDatabaseContext context)
         {
             var messages = new List<Message>();
 
-            messages = _context.Messages.ToList();
+            messages = context.Messages.ToList();
 
             return messages;
         }

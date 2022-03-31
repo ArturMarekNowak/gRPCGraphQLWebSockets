@@ -7,9 +7,11 @@ using gRPCGraphQLWebSockets.gRPC;
 using gRPCGraphQLWebSockets.Rest.Services;
 using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
 using gRPCGraphQLWebSockets.SignalR;
+using HotChocolate.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -45,10 +47,15 @@ namespace gRPCGraphQLWebSockets
             });
             services.AddGrpcSwagger();
 
-            services.AddDbContext<gRPCGraphQLWebSocketsDatabaseContext>();
+            services.AddDbContext<gRPCGraphQLWebSocketsDatabaseContext>(optionsBuilder =>
+            {
+                optionsBuilder.UseSqlite("DataSource=Database\\gRPCGraphQLWebSocketsDatabase.db");
+            });
+
             services.AddScoped<IRESTMessagesService, RESTMessagesService>();
 
             services.AddGraphQLServer()
+                .RegisterDbContext<gRPCGraphQLWebSocketsDatabaseContext>(DbContextKind.Pooled)
                 .AddQueryType<GraphQLMessagesQuery>()
                 .AddMutationType<GraphQLMessagesMutation>()
                 .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = _environment.IsDevelopment());
