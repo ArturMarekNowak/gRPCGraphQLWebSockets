@@ -1,4 +1,4 @@
-name: Trivy and Dockler
+name: Trivy and Dockle
 
 on:
   push:
