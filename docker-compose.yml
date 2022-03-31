@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  webapp:
+    image: ${DOCKER_REGISTRY-}webapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - "8080:80"
+    volumes:
+        - "./gRPCGraphQLWebSockets/Database/gRPCGraphQLWebSocketsDatabase.db:/app/Database/gRPCGraphQLWebSocketsDatabase.db"

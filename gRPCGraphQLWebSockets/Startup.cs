@@ -49,7 +49,7 @@ namespace gRPCGraphQLWebSockets
 
             services.AddDbContext<gRPCGraphQLWebSocketsDatabaseContext>(optionsBuilder =>
             {
-                optionsBuilder.UseSqlite("DataSource=Database\\gRPCGraphQLWebSocketsDatabase.db");
+                optionsBuilder.UseSqlite(@"DataSource=Database/gRPCGraphQLWebSocketsDatabase.db");
             });
 
             services.AddScoped<IRESTMessagesService, RESTMessagesService>();
