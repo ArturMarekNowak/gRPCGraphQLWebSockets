@@ -78,6 +78,7 @@ If you have .NET6 and Visual Studio or JetBrains Rider just open .sln file and t
 Code itself i nothing ordinary in my opinion. Just a lot of dependency injection and it works as I wanted. Few things are worth noticing:
 
 - GraphqlQL is so super cool, super powerful and super easy to code :D
+- However GraphQL required me to use method injection which is sad beacuse I really like constructor injection :c Reference: https://chillicream.com/docs/hotchocolate/integrations/entity-framework
 - I have used a really <em>UGLY</em> naming convention where classes names start with API name for example: <em>RESTNewMessage</em>, <em>gRPCMessage</em> and so on. It is ugly but I neeeded to differentiate objects in project and wanted sustain object "descriptivity".
 
 ## Features
