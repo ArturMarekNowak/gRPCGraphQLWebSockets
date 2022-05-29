@@ -1,6 +1,6 @@
 # gRPC GraphQL WebSockets 
 
-![Build](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/workflow.yml/badge.svg) ![Trivy and Dockle](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/docker-image.yml/badge.svg)
+![Build](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/workflow.yml/badge.svg) ![Trivy and Dockle](https://github.com/ArturMarekNowak/gRPCGraphQLWebSockets/actions/workflows/docker-image.yml/badge.svg) ![CodeFactor](https://www.codefactor.io/repository/github/arturmareknowak/gRPCGraphQLWebSockets/badge/master)
 
 
 The objective of this project is to make a toy example of REST API, gRPC, GraphQL and Websockets all accessing and realizing the same objective: retrieving and sending a simple message to the same database.
