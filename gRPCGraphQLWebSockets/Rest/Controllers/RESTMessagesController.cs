@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using gRPCGraphQLWebSockets.Rest.Model;
-using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
-using gRPCGraphQLWebSockets.SharedModel;
+using GrpcGraphQlWebSockets.Rest.Model;
+using GrpcGraphQlWebSockets.Rest.Services.Interfaces;
+using GrpcGraphQlWebSockets.SharedModel;
 using Microsoft.AspNetCore.Mvc;
 
-namespace gRPCGraphQLWebSockets.Rest.Controllers
+namespace GrpcGraphQlWebSockets.Rest.Controllers
 {
     [ApiController]
     [Route("rest/messages")]
     public class MessagesController : Controller
     {
-        private readonly IRESTMessagesService _messagesService;
+        private readonly IRestMessagesService _messagesService;
 
-        public MessagesController(IRESTMessagesService messagesService)
+        public MessagesController(IRestMessagesService messagesService)
         {
             _messagesService = messagesService;
         }
@@ -29,9 +29,6 @@ namespace gRPCGraphQLWebSockets.Rest.Controllers
         {
             var messages = _messagesService.GetMessages();
 
-            if (!messages.Any())
-                return NotFound();
-
             return Ok(messages);
         }
 
@@ -42,11 +39,11 @@ namespace gRPCGraphQLWebSockets.Rest.Controllers
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(201)]
-        public async Task<ActionResult<RESTMessageId>> CreateMessage(RESTNewMessage newMessage)
+        public async Task<ActionResult<RestMessageId>> CreateMessage(RestNewMessage newMessage)
         {
             var messageId = await _messagesService.CreateMessage(newMessage);
 
-            return Ok(new RESTMessageId {Id = messageId});
+            return Ok(new RestMessageId {Id = messageId});
         }
     }
 }

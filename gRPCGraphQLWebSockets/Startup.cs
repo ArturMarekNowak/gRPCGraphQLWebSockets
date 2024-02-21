@@ -1,12 +1,12 @@
 using System;
 using System.IO;
 using System.Reflection;
-using gRPCGraphQLWebSockets.Database;
-using gRPCGraphQLWebSockets.GraphQL;
-using gRPCGraphQLWebSockets.gRPC;
-using gRPCGraphQLWebSockets.Rest.Services;
-using gRPCGraphQLWebSockets.Rest.Services.Interfaces;
-using gRPCGraphQLWebSockets.SignalR;
+using GrpcGraphQlWebSockets.Database;
+using GrpcGraphQlWebSockets.GraphQL;
+using GrpcGraphQlWebSockets.Grpc;
+using GrpcGraphQlWebSockets.Rest.Services;
+using GrpcGraphQlWebSockets.Rest.Services.Interfaces;
+using GrpcGraphQlWebSockets.SignalR;
 using HotChocolate.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,7 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace gRPCGraphQLWebSockets
+namespace GrpcGraphQlWebSockets
 {
     public class Startup
     {
@@ -47,17 +47,17 @@ namespace gRPCGraphQLWebSockets
             });
             services.AddGrpcSwagger();
 
-            services.AddDbContext<gRPCGraphQLWebSocketsDatabaseContext>(optionsBuilder =>
+            services.AddDbContext<GrpcGraphQlWebSocketsDatabaseContext>(optionsBuilder =>
             {
-                optionsBuilder.UseSqlite(@"DataSource=Database/gRPCGraphQLWebSocketsDatabase.db");
+                optionsBuilder.UseSqlite(@"DataSource=Database/GrpcGraphQlWebSocketsDatabase.db");
             });
 
-            services.AddScoped<IRESTMessagesService, RESTMessagesService>();
+            services.AddScoped<IRestMessagesService, RestMessagesService>();
 
             services.AddGraphQLServer()
-                .RegisterDbContext<gRPCGraphQLWebSocketsDatabaseContext>(DbContextKind.Pooled)
-                .AddQueryType<GraphQLMessagesQuery>()
-                .AddMutationType<GraphQLMessagesMutation>()
+                .RegisterDbContext<GrpcGraphQlWebSocketsDatabaseContext>(DbContextKind.Pooled)
+                .AddQueryType<GraphQlMessagesQuery>()
+                .AddMutationType<GraphQlMessagesMutation>()
                 .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = _environment.IsDevelopment());
 
             services.AddSignalR();
@@ -82,7 +82,7 @@ namespace gRPCGraphQLWebSockets
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapGrpcService<gRPCMessagesService>();
+                endpoints.MapGrpcService<GrpcMessagesService>();
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response

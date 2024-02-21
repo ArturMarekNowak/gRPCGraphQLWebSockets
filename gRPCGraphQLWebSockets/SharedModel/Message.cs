@@ -1,11 +1,11 @@
 ﻿using System;
-using gRPCGraphQLWebSockets.GraphQL.Model;
-using gRPCGraphQLWebSockets.gRPC.Proto;
-using gRPCGraphQLWebSockets.Rest.Model;
+using GrpcGraphQlWebSockets.GraphQL.Model;
+using GrpcGraphQlWebSockets.Rest.Model;
+using GrpcGraphQLWebSockets.Grpc.Proto;
 
 #nullable disable
 
-namespace gRPCGraphQLWebSockets.SharedModel
+namespace GrpcGraphQlWebSockets.SharedModel
 {
     public sealed class Message
     {
@@ -13,19 +13,19 @@ namespace gRPCGraphQLWebSockets.SharedModel
         {
         }
 
-        public Message(RESTNewMessage newMessage)
+        public Message(RestNewMessage newMessage)
         {
             Text = newMessage.Text;
         }
 
-        public Message(gRPCCreateMessageRequest gRpcCreateMessageRequest)
+        public Message(GrpcCreateMessageRequest grpcCreateMessageRequest)
         {
-            Text = gRpcCreateMessageRequest.MessagePayload.Text;
+            Text = grpcCreateMessageRequest.MessagePayload.Text;
         }
 
-        public Message(GraphQLNewMessage gRpcCreateMessageRequest)
+        public Message(GraphQlNewMessage grpcCreateMessageRequest)
         {
-            Text = gRpcCreateMessageRequest.Text;
+            Text = grpcCreateMessageRequest.Text;
         }
 
         public long Id { get; set; }

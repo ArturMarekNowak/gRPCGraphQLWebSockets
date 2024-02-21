@@ -1,6 +1,6 @@
-﻿namespace gRPCGraphQLWebSockets.Rest.Model
+﻿namespace GrpcGraphQlWebSockets.Rest.Model
 {
-    public class RESTMessageId
+    public class RestMessageId
     {
        public long Id { get; set; } 
     }
