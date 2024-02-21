@@ -1,15 +1,15 @@
 ﻿using System.Threading.Tasks;
-using gRPCGraphQLWebSockets.Database;
-using gRPCGraphQLWebSockets.SharedModel;
+using GrpcGraphQlWebSockets.Database;
+using GrpcGraphQlWebSockets.SharedModel;
 using Microsoft.AspNetCore.SignalR;
 
-namespace gRPCGraphQLWebSockets.SignalR
+namespace GrpcGraphQlWebSockets.SignalR
 {
     public class SignalRMessageHub : Hub
     {
-        private readonly gRPCGraphQLWebSocketsDatabaseContext _context;
+        private readonly GrpcGraphQlWebSocketsDatabaseContext _context;
 
-        public SignalRMessageHub(gRPCGraphQLWebSocketsDatabaseContext context)
+        public SignalRMessageHub(GrpcGraphQlWebSocketsDatabaseContext context)
         {
             _context = context;
         }

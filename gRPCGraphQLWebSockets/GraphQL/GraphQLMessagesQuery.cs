@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using gRPCGraphQLWebSockets.Database;
-using gRPCGraphQLWebSockets.SharedModel;
+using GrpcGraphQlWebSockets.Database;
+using GrpcGraphQlWebSockets.SharedModel;
 using HotChocolate;
 
-namespace gRPCGraphQLWebSockets.GraphQL
+namespace GrpcGraphQlWebSockets.GraphQL
 {
-    public class GraphQLMessagesQuery
+    public class GraphQlMessagesQuery
     {
-        public List<Message> GetMessages([Service] gRPCGraphQLWebSocketsDatabaseContext context)
+        public List<Message> GetMessages([Service] GrpcGraphQlWebSocketsDatabaseContext context)
         {
             var messages = new List<Message>();
 

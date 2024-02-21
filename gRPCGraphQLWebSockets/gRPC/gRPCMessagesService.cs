@@ -1,31 +1,31 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
-using gRPCGraphQLWebSockets.Database;
-using gRPCGraphQLWebSockets.gRPC.Proto;
-using gRPCGraphQLWebSockets.SharedModel;
+using GrpcGraphQlWebSockets.Database;
+using GrpcGraphQLWebSockets.Grpc.Proto;
+using GrpcGraphQlWebSockets.SharedModel;
 
-namespace gRPCGraphQLWebSockets.gRPC
+namespace GrpcGraphQlWebSockets.Grpc
 {
-    public class gRPCMessagesService : Proto.gRPCMessagesService.gRPCMessagesServiceBase
+    public class GrpcMessagesService : GrpcGraphQLWebSockets.Grpc.Proto.GrpcMessagesService.GrpcMessagesServiceBase
     {
-        public gRPCGraphQLWebSocketsDatabaseContext _context;
+        public GrpcGraphQlWebSocketsDatabaseContext _context;
 
-        public gRPCMessagesService(gRPCGraphQLWebSocketsDatabaseContext context)
+        public GrpcMessagesService(GrpcGraphQlWebSocketsDatabaseContext context)
         {
             _context = context;
         }
 
 
-        public override Task<gRPCGetMessagesResponse> GetMessages(gRPCGetMessagesRequest messageRequest,
+        public override Task<GrpcGetMessagesResponse> GetMessages(GrpcGetMessagesRequest messageRequest,
             ServerCallContext context)
         {
             var messages = _context.Messages.ToList();
 
-            var getMessagesResponse = new gRPCGetMessagesResponse();
+            var getMessagesResponse = new GrpcGetMessagesResponse();
 
             foreach (var message in messages)
-                getMessagesResponse.Messages.Add(new gRPCMessage
+                getMessagesResponse.Messages.Add(new GrpcMessage
                 {
                     Id = message.Id,
                     Text = message.Text
@@ -34,7 +34,7 @@ namespace gRPCGraphQLWebSockets.gRPC
             return Task.FromResult(getMessagesResponse);
         }
 
-        public override async Task<gRPCCreateMessageResponse> CreateMessage(gRPCCreateMessageRequest messageRequest,
+        public override async Task<GrpcCreateMessageResponse> CreateMessage(GrpcCreateMessageRequest messageRequest,
             ServerCallContext context)
         {
             var message = new Message(messageRequest);
@@ -43,7 +43,7 @@ namespace gRPCGraphQLWebSockets.gRPC
 
             await _context.SaveChangesAsync();
 
-            return await Task.FromResult(new gRPCCreateMessageResponse
+            return await Task.FromResult(new GrpcCreateMessageResponse
             {
                 Id = message.Id
             });

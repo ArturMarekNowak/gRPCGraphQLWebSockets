@@ -1,46 +1,46 @@
 ﻿syntax = "proto3";
 
-option csharp_namespace = "gRPCGraphQLWebSockets.gRPC.Proto";
+option csharp_namespace = "GrpcGraphQLWebSockets.Grpc.Proto";
 
 import "google/api/annotations.proto";
 
-package gRPC;
-service gRPCMessagesService {
-  rpc GetMessages (gRPCGetMessagesRequest) returns (gRPCGetMessagesResponse) {
+package Grpc;
+service GrpcMessagesService {
+  rpc GetMessages (GrpcGetMessagesRequest) returns (GrpcGetMessagesResponse) {
     option (google.api.http) = {
-      get: "/grpc/messages"
+      get: "/Grpc/messages"
     };
   }
   
-  rpc CreateMessage (gRPCCreateMessageRequest) returns (gRPCCreateMessageResponse) {
+  rpc CreateMessage (GrpcCreateMessageRequest) returns (GrpcCreateMessageResponse) {
     option (google.api.http) = {
-      post: "/grpc/messages"
+      post: "/Grpc/messages"
       body: "messagePayload"
     };
   }
 }
 
-message gRPCGetMessagesRequest {
+message GrpcGetMessagesRequest {
   
 }
 
-message gRPCGetMessagesResponse {
-  repeated gRPCMessage messages = 1;
+message GrpcGetMessagesResponse {
+  repeated GrpcMessage messages = 1;
 }
 
-message gRPCMessage {
+message GrpcMessage {
   int64 id = 1;
   string text = 2;
 }
 
-message gRPCCreateMessageRequest {
-  gRPCMessagePayload messagePayload = 1;
+message GrpcCreateMessageRequest {
+  GrpcMessagePayload messagePayload = 1;
 }
 
-message gRPCMessagePayload {
+message GrpcMessagePayload {
   string text = 1;
 }
 
-message gRPCCreateMessageResponse {
+message GrpcCreateMessageResponse {
   int64 id = 1;
 }

@@ -1,6 +1,6 @@
-﻿namespace gRPCGraphQLWebSockets.GraphQL.Model
+﻿namespace GrpcGraphQlWebSockets.GraphQL.Model
 {
-    public class GraphQLNewMessage
+    public class GraphQlNewMessage
     {
         public string Text { get; set; }
     }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using gRPCGraphQLWebSockets.SharedModel;
-using gRPCGraphQLWebSockets.SignalR;
+using GrpcGraphQlWebSockets.SharedModel;
+using GrpcGraphQlWebSockets.SignalR;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -10,17 +10,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 #nullable disable
 
-namespace gRPCGraphQLWebSockets.Database
+namespace GrpcGraphQlWebSockets.Database
 {
-    public sealed class gRPCGraphQLWebSocketsDatabaseContext : DbContext
+    public sealed class GrpcGraphQlWebSocketsDatabaseContext : DbContext
     {
         private readonly IServiceProvider _provider;
 
-        public gRPCGraphQLWebSocketsDatabaseContext()
+        public GrpcGraphQlWebSocketsDatabaseContext()
         {
         }
 
-        public gRPCGraphQLWebSocketsDatabaseContext(DbContextOptions<gRPCGraphQLWebSocketsDatabaseContext> options,
+        public GrpcGraphQlWebSocketsDatabaseContext(DbContextOptions<GrpcGraphQlWebSocketsDatabaseContext> options,
             IServiceProvider provider)
             : base(options)
         {

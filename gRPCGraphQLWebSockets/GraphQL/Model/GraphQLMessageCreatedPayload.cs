@@ -1,6 +1,6 @@
-﻿namespace gRPCGraphQLWebSockets.GraphQL.Model
+﻿namespace GrpcGraphQlWebSockets.GraphQL.Model
 {
-    public class GraphQLMessageCreatedPayload
+    public class GraphQlMessageCreatedPayload
     {
         public long Id { get; set; }
     }
