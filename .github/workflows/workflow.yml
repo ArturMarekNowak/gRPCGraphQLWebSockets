@@ -21,9 +21,9 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
-        run: dotnet restore src/gRPCGraphQLWebSockets/gRPCGraphQLWebSockets.csproj
+        run: dotnet restore src/GrpcGraphQlWebSockets/GrpcGraphQlWebSockets.csproj
       - name: Build
-        run: dotnet build src/gRPCGraphQLWebSockets/gRPCGraphQLWebSockets.csproj --configuration Release --no-restore
+        run: dotnet build src/GrpcGraphQlWebSockets/GrpcGraphQlWebSockets.csproj --configuration Release --no-restore
       - name: Install dependencies
         run: dotnet restore src/SignalRClient/SignalRClient.csproj
       - name: Build
