@@ -34,17 +34,18 @@ For container the origin is: http://localhost:8080/
 Solution structure is as following:
 
     .
-    ├── gRPCGraphQLWebSockets   # Server application for REST, GraphQL, SignalR and gRPC
-    │	├── Database            # Directory where database context is stored along with SQLite database itself
-    │	├── google     			# This directory contains .proto files required to run gRPC, placed in here beacuse otherwise it won't work
-    │	├── GraphQL   			# GraphQL mutations, queries and models are stored in here
-    │	├── gRPC        		# gRPC service.cs and service.proto files are stored in here
-    │	├── Rest         		# REST controller, service and model
-    │	├── SignalR    			# SignalR server hub is stored in here
-    │	└── SharedModel      	# Models the same throughout the whole solution
-    │        
-    └── SignalRClient           # Simple SignalR client console application - one file and one .csproj
-        └── ...               
+	└──src
+		├── GrpcGraphQlWebSockets   # Server application for REST, GraphQL, SignalR and gRPC
+		│	├── Database            # Directory where database context is stored along with SQLite database itself
+		│	├── google     			# This directory contains .proto files required to run gRPC, placed in here beacuse otherwise it won't work
+		│	├── GraphQl   			# GraphQL mutations, queries and models are stored in here
+		│	├── Grpc        		# gRPC service.cs and service.proto files are stored in here
+		│	├── Rest         		# REST controller, service and model
+		│	├── SignalR    			# SignalR server hub is stored in here
+		│	└── SharedModel      	# Models the same throughout the whole solution
+		│        
+		└── SignalRClient           # Simple SignalR client console application - one file and one .csproj
+			└── ...               
 
 ## Screenshots
 
@@ -77,7 +78,7 @@ GraphQL example.
 * Docker
 
 ## Setup
-If you have .NET6 and Visual Studio or JetBrains Rider just open .sln file and try to run the project.
+If you have .NET8 and Visual Studio or JetBrains Rider just open .sln file and try to run the project.
 
 ## Code
 Code itself i nothing ordinary in my opinion. Just a lot of dependency injection and it works as I wanted. Few things are worth noticing:
