@@ -21,10 +21,10 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
-        run: dotnet restore gRPCGraphQLWebSockets/gRPCGraphQLWebSockets.csproj
+        run: dotnet restore src/gRPCGraphQLWebSockets/gRPCGraphQLWebSockets.csproj
       - name: Build
-        run: dotnet build gRPCGraphQLWebSockets/gRPCGraphQLWebSockets.csproj --configuration Release --no-restore
+        run: dotnet build src/gRPCGraphQLWebSockets/gRPCGraphQLWebSockets.csproj --configuration Release --no-restore
       - name: Install dependencies
-        run: dotnet restore SignalRClient/SignalRClient.csproj
+        run: dotnet restore src/SignalRClient/SignalRClient.csproj
       - name: Build
-        run: dotnet build SignalRClient/SignalRClient.csproj --configuration Release --no-restore
+        run: dotnet build src/SignalRClient/SignalRClient.csproj --configuration Release --no-restore
