@@ -35,7 +35,7 @@ namespace GrpcGraphQlWebSockets
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
-            services.AddGrpcHttpApi();
+            //services.AddGrpcHttpApi();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
