@@ -94,9 +94,9 @@ REST, SignalR, GraphQL and gRPC - all in one :D
 All is done :D
 
 ## Status
-Project is: _in progress_
+Project is: _finished_
 
-## Inspiration
+thoughts
 I have heard a lot about how cool GraphQL and gRPC are so I have decided to make one toy example and encapsulate it in the same project with REST and SignalR in orderd to get the best possible comparison and visualization.
 
 Since Microsoft documentation on gRPC+Swagger is realy "so so" these two guys were my inspiration in this case: 
