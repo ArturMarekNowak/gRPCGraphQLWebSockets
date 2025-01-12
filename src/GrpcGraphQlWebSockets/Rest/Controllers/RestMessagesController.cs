@@ -20,7 +20,7 @@ namespace GrpcGraphQlWebSockets.Rest.Controllers
         }
 
         /// <summary>
-        ///     This method allows retrieval of the messages in the project
+        /// This method allows retrieval of the messages
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -33,7 +33,7 @@ namespace GrpcGraphQlWebSockets.Rest.Controllers
         }
 
         /// <summary>
-        ///     This method allows adding of the message in the project
+        /// This method allows addition of the message
         /// </summary>
         /// <param name="newMessage">NewMessage object which is just a string with message content</param>
         /// <returns></returns>
