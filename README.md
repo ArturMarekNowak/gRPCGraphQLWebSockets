@@ -11,8 +11,6 @@ The objective of this project is to make a toy example of REST API, gRPC, GraphQ
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Features](#features)
-* [Status](#status)
 * [Inspiration](#inspiration)
 
 ## General info
@@ -80,24 +78,8 @@ GraphQL example.
 ## Setup
 If you have .NET8 and Visual Studio or JetBrains Rider just open .sln file and try to run the project.
 
-## Code
-Code itself i nothing ordinary in my opinion. Just a lot of dependency injection and it works as I wanted. Few things are worth noticing:
-
-- GraphqlQL is so super cool, super powerful and super easy to code :D
-- However GraphQL required me to use method injection which is sad beacuse I really like constructor injection :c Reference: https://chillicream.com/docs/hotchocolate/integrations/entity-framework
-- I have used a really <em>UGLY</em> naming convention where classes names start with API name for example: <em>RESTNewMessage</em>, <em>gRPCMessage</em> and so on. It is ugly but I neeeded to differentiate objects in project and wanted sustain object "descriptivity".
-
-## Features
-REST, SignalR, GraphQL and gRPC - all in one :D
-
-## To-do list:
-All is done :D
-
 ## Status
 Project is: _finished_
-
-thoughts
-I have heard a lot about how cool GraphQL and gRPC are so I have decided to make one toy example and encapsulate it in the same project with REST and SignalR in orderd to get the best possible comparison and visualization.
 
 Since Microsoft documentation on gRPC+Swagger is realy "so so" these two guys were my inspiration in this case: 
 
